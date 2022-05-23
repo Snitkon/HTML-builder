@@ -1,11 +1,11 @@
 const path = require("path");
 const fs = require("fs");
 const step = require("process");
-const stream = fs.createWriteStream(path.join(__dirname, "text.txt"));
+const stream = fs.createWriteStream(path.join(__dirname, "text.txt"), 'utf-8');
 const readline = require("readline");
 const { stdin: input, stdout: output } = require("process");
 
-step.on("indicate", () => step.exit());
+step.on("SIGINT", () => step.exit());
 step.on("exit", () => step.stdout.write("Хорошего дня!\n"));
 
 step.stdout.write("Введите текст:\n");
