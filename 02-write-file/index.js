@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const step = require("process");
-const stream = fs.createWriteStream(path.join(__dirname, "output.txt"));
+const stream = fs.createWriteStream(path.join(__dirname, "out.txt"));
 const readline = require("readline");
 const { stdin: input, stdout: output } = require("process");
 
@@ -13,4 +13,5 @@ step.stdin.on("data", (data) => {
   if (data.toString().trim() === "out") step.exit();
   stream.write(data);
 });
+
 
