@@ -1,15 +1,15 @@
 const path = require("path");
 const fs = require("fs");
-const step = require("process");
+const process = require("process");
 const stream = fs.createWriteStream(path.join(__dirname, "text.txt"), 'utf-8');
 const readline = require("readline");
 const { stdin: input, stdout: output } = require("process");
 
-step.on("SIGINT", () => step.exit());
-step.on("exit", () => step.stdout.write("Хорошего дня!\n"));
+process.on("SIGINT", () => process.exit());
+process.on("exit", () => process.stdout.write("Хорошего дня!\n"));
 
-step.stdout.write("Введите текст:\n");
-step.stdin.on("data", (data) => {
-  if (data.toString().trim() === "exit") step.exit();
+process.stdout.write("Введите текст:\n");
+process.stdin.on("data", (data) => {
+  if (data.toString().trim() === "exit") process.exit();
   stream.write(data);
 });
